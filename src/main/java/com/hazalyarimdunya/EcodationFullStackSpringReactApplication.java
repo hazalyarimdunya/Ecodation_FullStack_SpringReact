@@ -7,10 +7,9 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-
 import java.util.TimeZone;
 
-// Mongo aktif etmek icin
+// Mongo aktif etmek ici
 // @EnableMongoRepositories
 
 // Aspect aktif etmek icin
@@ -19,20 +18,20 @@ import java.util.TimeZone;
 // Asenkron açmak icin
 // @EnableAsync
 
-// SCAN
-//@EntityScan(basePackages = "com.hamitmizrak.techcareer_2025_backend_1.data.entity")//Entity bulamadığı zaman
-//@EnableJpaRepositories(basePackages = "com.hamitmizrak.techcareer_2025_backend_1.data.repository") //Repository bulamadığı zaman
-//@ComponentScan("com")
-
 // Spring Cache aktif etmek gerekiyor.
 // @EnableCaching
 
 // Auditing Aktif etmek
 // Dikkat: public class AuditingAwareBean içindeki method ismi:auditorAwareBeanMethod
-// @EnableJpaAuditing(auditorAwareRef = "auditingAwareBeanMethod")
+@EnableJpaAuditing(auditorAwareRef = "auditingAwareBeanMethod")
 
 // Spring Security: Şimdilik dahil etme, çünkü Bcrypted kullancağım ancak Spring security için gerekli kütüphaneleri dahil
 // Buradaki exclude ne zaman kapatmam gerekiyor ? cevap: Spring Security ile çalıştığımız zaman kapat
+
+// SCAN
+//@EntityScan(basePackages = "com.yarimdunyahazal.techcareer_2025_backend_1.data.entity")//Entity bulamadığı zaman
+//@EnableJpaRepositories(basePackages = "com.yarimdunyahazal.techcareer_2025_backend_1.data.repository") //Repository bulamadığı zaman
+//@ComponentScan("com")
 @SpringBootApplication(exclude = {
         // Spring Security Dahil etme
         //SecurityAutoConfiguration.class,
@@ -49,8 +48,6 @@ import java.util.TimeZone;
         RedisAutoConfiguration.class,
 }
 )
-
-
 //@SpringBootApplication
 public class EcodationFullStackSpringReactApplication {
 
@@ -74,6 +71,7 @@ public class EcodationFullStackSpringReactApplication {
 
     // PSVM
     public static void main(String[] args) {
+
         // devtools active isActive
         //System.setProperty("spring.devtools.restart.enabled","true");
 
@@ -87,42 +85,8 @@ public class EcodationFullStackSpringReactApplication {
 
         // JOptional pane aktif etmek
         System.setProperty("java.awt.headless", "false");
+
         // Main
         SpringApplication.run(EcodationFullStackSpringReactApplication.class, args);
     }
-
-}//end @SpringBootApplication
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} //end @SpringBootApplication
